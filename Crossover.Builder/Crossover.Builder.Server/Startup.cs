@@ -12,6 +12,7 @@ namespace Crossover.Builder.Server
         {
             this.ConfigureAuth(appBuilder);
             this.ConfigureWebApi(appBuilder);
+            this.ConfigureFileServer(appBuilder);
 
             appBuilder.UseErrorPage();
             appBuilder.Run(context =>
