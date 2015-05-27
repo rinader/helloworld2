@@ -17,6 +17,8 @@ namespace Crossover.Builder.Server
     {
         public void ConfigureAuth(IAppBuilder app)
         {
+            app.UseCors(CorsOptions.AllowAll);
+
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(AuthContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
@@ -38,15 +40,12 @@ namespace Crossover.Builder.Server
             });
 
             // Enable the application to use bearer token to store information for the signed in user
-            app.UseCors(CorsOptions.AllowAll);
             app.UseOAuthBearerTokens(new OAuthAuthorizationServerOptions
             {
                 TokenEndpointPath = new PathString("/Token"),
                 Provider = new ApplicationOAuthServerProvider(),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
-
-                // TODO: For demo
-                AllowInsecureHttp = true
+                AllowInsecureHttp = false
             });
         }
     }

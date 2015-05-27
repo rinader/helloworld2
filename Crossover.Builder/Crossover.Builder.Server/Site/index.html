@@ -3,18 +3,91 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
-    <script src="scripts/jquery-2.1.4.min.js"></script>
     <title>Crossover Builder Server Web Site</title>
+    <link href="content/bootstrap.min.css" rel="stylesheet"/>
+    <link href="content/bootstrap-theme.min.css" rel="stylesheet"/>
+    <link href="content/main.css" rel="stylesheet"/>
 </head>
 <body>
-<h2>Crossover Builder Server Web Site</h2>
-    <div class="blue">Bla</div>
-    <div class="s"></div>
-<script>
-    $(document).ready(function() {
-        $(".blue").css({ "color": "blue" })
-        $(".s").html("OK");
-    });
-</script>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <form id="loginForm" class="navbar-form navbar-right" data-bind="submit: login">
+                <div class="form-group">
+                    <input type="text" placeholder="Email" class="form-control" data-bind="value: loginEmail">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control" data-bind="value: loginPassword">
+                </div>
+                <button type="submit" class="btn btn-success">Sign in</button>
+                <button data-bind="click: showRegisterOrLogin" class="btn btn-default">Register</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <div class="container">
+        <h2>Crossover Builder Server Web Site</h2>
+    </div>
+</div>
+
+<div class="container">
+    <div id="registerForm" class="collapse">
+        <form data-bind="submit: register">
+            <h3>Register</h3>
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="text" data-bind="value: registerEmail"/>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input class="form-control" type="password" data-bind="value: registerPassword"/>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input class="form-control" type="password" data-bind="value: registerPassword2"/>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">OK</button>
+                <button data-bind="click: showRegisterOrLogin" class="btn btn-default">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div id="usersForm">
+        <form data-bind="submit: callApi">
+            <h3>Invoke API</h3>
+            <div class="form-group">
+                <label>User</label>
+                <input class="form-control" type="text" readonly data-bind="value: user"/>
+            </div>
+            <div class="form-group">
+                <label>Result</label>
+                <input class="form-control" type="text" readonly data-bind="value: result"/>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Call API</button>
+                <button data-bind="click: logout" class="btn btn-default">Log Out</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="scripts/jquery-2.1.4.min.js"></script>
+<script src="scripts/knockout-3.3.0.js"></script>
+<script src="scripts/index.js"></script>
 </body>
 </html>

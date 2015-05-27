@@ -61,6 +61,13 @@ namespace Crossover.Builder.Server.Controllers
             return this.Ok();
         }
 
+        [Route("User")]
+        public string GetUser()
+        {
+            var userName = this.RequestContext.Principal.Identity.Name;
+            return string.Format("Hello, {0}.", userName);
+        }
+
         // POST api/Account/Logout
         [Route("Logout")]
         public IHttpActionResult Logout()

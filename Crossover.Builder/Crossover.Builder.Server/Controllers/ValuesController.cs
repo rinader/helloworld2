@@ -15,7 +15,6 @@ namespace Crossover.Builder.Server.Controllers
         }
 
         // GET api/values/5 
-        [Authorize]
         public string Get(int id)
         {
             return "value";

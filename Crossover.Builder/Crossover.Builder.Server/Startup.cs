@@ -15,18 +15,18 @@ namespace Crossover.Builder.Server
             this.ConfigureFileServer(appBuilder);
 
             appBuilder.UseErrorPage();
-            appBuilder.Run(context =>
-            {
-                if (context.Request.Path.Equals(new PathString("/fail")))
-                {
-                    throw new Exception("Random exception");
-                }
+            //appBuilder.Run(context =>
+            //{
+            //    if (context.Request.Path.Equals(new PathString("/fail")))
+            //    {
+            //        throw new Exception("Random exception");
+            //    }
 
-                if(context.Request.IsSecure)
+            //    if(context.Request.IsSecure)
 
-                context.Response.ContentType = "text/plain";
-                return context.Response.WriteAsync("Hello, world.");
-            });
+            //    context.Response.ContentType = "text/plain";
+            //    return context.Response.WriteAsync("Hello, world.");
+            //});
         }
     }
 }
